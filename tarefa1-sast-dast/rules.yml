@@ -1,0 +1,106 @@
+rules:
+- id: hardcoded-jwt-secret
+  languages:
+  - javascript
+  severity: ERROR
+  message: 'V1 (A02, CWE-798): Segredo JWT hardcoded no codigo. Use variavel de ambiente.'
+  metadata:
+    owasp: A02
+    vuln: V1
+  pattern-regex: const\s+SECRET\s*=\s*"[^"]+"
+- id: sql-injection-concat
+  languages:
+  - javascript
+  severity: ERROR
+  message: 'V2/V6 (A03, CWE-89): Query SQL montada por interpolacao de string. Use query parametrizada.'
+  metadata:
+    owasp: A03
+    vuln: V2/V6
+  pattern-regex: (SELECT|INSERT|UPDATE|DELETE)\b[^`\n]*\$\{
+- id: jwt-without-expiration
+  languages:
+  - javascript
+  severity: WARNING
+  message: 'V3 (A07, CWE-613): jwt.sign sem expiresIn. Token nao expira.'
+  metadata:
+    owasp: A07
+    vuln: V3
+  patterns:
+  - pattern: jwt.sign($P, $S)
+- id: token-from-auth-header
+  languages:
+  - javascript
+  severity: WARNING
+  message: 'V5 (A07): Token lido cru de req.headers.authorization. Prefira cookie HttpOnly.'
+  metadata:
+    owasp: A07
+    vuln: V5
+  patterns:
+  - pattern: req.headers.authorization
+- id: token-role-in-localstorage
+  languages:
+  - javascript
+  severity: ERROR
+  message: 'V12/V13 (A07, CWE-522): Token/role em localStorage, acessivel a XSS. Use cookie HttpOnly.'
+  metadata:
+    owasp: A07
+    vuln: V12/V13
+  patterns:
+  - pattern: localStorage.setItem($K, $V)
+- id: client-authz-localstorage
+  languages:
+  - javascript
+  severity: ERROR
+  message: 'V14 (A01, CWE-602): Autorizacao decidida no cliente via localStorage. Imponha no servidor.'
+  metadata:
+    owasp: A01
+    vuln: V14
+  patterns:
+  - pattern: localStorage.getItem("role")
+- id: react-dangerous-innerhtml
+  languages:
+  - javascript
+  severity: ERROR
+  message: 'V15 (A03, CWE-79 XSS): dangerouslySetInnerHTML sem sanitizacao. Use DOMPurify ou texto puro.'
+  metadata:
+    owasp: A03
+    vuln: V15
+  pattern-regex: dangerouslySetInnerHTML=\{\{\s*__html:\s*(?!DOMPurify\.sanitize|clean\b|sanitized\b)
+- id: cors-wildcard
+  languages:
+  - javascript
+  severity: WARNING
+  message: 'V16 (A05, CWE-942): cors() sem config aceita qualquer origem.'
+  metadata:
+    owasp: A05
+    vuln: V16
+  patterns:
+  - pattern: app.use(cors())
+- id: json-no-limit
+  languages:
+  - javascript
+  severity: WARNING
+  message: 'V17 (A05, CWE-400): express.json() sem limite de tamanho (DoS).'
+  metadata:
+    owasp: A05
+    vuln: V17
+  patterns:
+  - pattern: express.json()
+- id: error-leaks-stack
+  languages:
+  - javascript
+  severity: WARNING
+  message: 'V20 (A05, CWE-209): Error handler expoe err.stack.'
+  metadata:
+    owasp: A05
+    vuln: V20
+  pattern-regex: stack:\s*err\.stack
+- id: insecure-http
+  languages:
+  - javascript
+  severity: WARNING
+  message: 'V11 (A02, CWE-319): Chamada em http:// sem TLS.'
+  metadata:
+    owasp: A02
+    vuln: V11
+  pattern-regex: fetch\(\s*[`\x27"]http://

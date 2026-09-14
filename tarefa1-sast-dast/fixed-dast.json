@@ -1,0 +1,93 @@
+[
+  {
+    "id": "V2",
+    "name": "SQL Injection / auth bypass",
+    "owasp": "A03",
+    "status": "OK",
+    "evidence": "Payload de injecao retornou HTTP 400 (esperado 400/401)"
+  },
+  {
+    "id": "V4",
+    "name": "Role/token no body do login",
+    "owasp": "A02",
+    "status": "OK",
+    "evidence": "Body do login: {\"user\":{\"id\":2,\"email\":\"user@gofood.com\"}}"
+  },
+  {
+    "id": "V12/V13",
+    "name": "Token via cookie HttpOnly (nao localStorage)",
+    "owasp": "A07",
+    "status": "OK",
+    "evidence": "Set-Cookie contem HttpOnly=True, Secure=True, SameSite=True"
+  },
+  {
+    "id": "V3",
+    "name": "JWT com expiracao",
+    "owasp": "A07",
+    "status": "OK",
+    "evidence": "Claims: ['sub', 'role', 'iat', 'exp']"
+  },
+  {
+    "id": "V1",
+    "name": "Secret forte (token antigo rejeitado)",
+    "owasp": "A02",
+    "status": "OK",
+    "evidence": "Token forjado com secret antigo -> HTTP 401 (esperado 401/403)"
+  },
+  {
+    "id": "V7",
+    "name": "IDOR em /orders/:id",
+    "owasp": "A01",
+    "status": "OK",
+    "evidence": "Usuario comum acessando pedido do admin -> HTTP 403 (esperado 403)"
+  },
+  {
+    "id": "V6",
+    "name": "SQL Injection (UNION)",
+    "owasp": "A03",
+    "status": "OK",
+    "evidence": "UNION -> HTTP 400, sem coluna password no retorno"
+  },
+  {
+    "id": "V10",
+    "name": "Authz em /admin/orders",
+    "owasp": "A01",
+    "status": "OK",
+    "evidence": "Usuario role=customer em /admin/orders -> HTTP 403 (esperado 403)"
+  },
+  {
+    "id": "V9",
+    "name": "Preco calculado no servidor",
+    "owasp": "A04",
+    "status": "OK",
+    "evidence": "Pedido -> HTTP 201, resposta {\"id\":\"44444444-4444-4444-4444-444444444444\",\"total\":25}"
+  },
+  {
+    "id": "V16",
+    "name": "CORS restrito",
+    "owasp": "A05",
+    "status": "OK",
+    "evidence": "ACAO para evil.com: https://app.gofood.com"
+  },
+  {
+    "id": "V19",
+    "name": "Security headers (helmet)",
+    "owasp": "A05",
+    "status": "OK",
+    "evidence": "Presentes: ['X-Content-Type-Options', 'Content-Security-Policy', 'Strict-Transport-Security', 'X-Frame-Options']"
+  },
+  {
+    "id": "V18",
+    "name": "Rate limiting no login",
+    "owasp": "A07",
+    "status": "OK",
+    "evidence": "Codigos: [401, 401, 401, 429, 429, 429, 429, 429]"
+  },
+  {
+    "id": "V20",
+    "name": "Stack trace em erro",
+    "owasp": "A05",
+    "status": "OK",
+    "evidence": "HTTP 400, sem stack no corpo"
+  }
+]

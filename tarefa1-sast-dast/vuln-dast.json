@@ -1,0 +1,86 @@
+[
+  {
+    "id": "V2",
+    "name": "SQL Injection / auth bypass no login",
+    "owasp": "A03",
+    "status": "VULNERAVEL",
+    "evidence": "Payload \"' OR '1'='1' --\" retornou token com role=admin (HTTP 200)"
+  },
+  {
+    "id": "V1",
+    "name": "Secret JWT hardcoded permite forjar token",
+    "owasp": "A02",
+    "status": "VULNERAVEL",
+    "evidence": "Token forjado com secret 'gofood2024secret' foi aceito em /api/admin/orders (HTTP 200)"
+  },
+  {
+    "id": "V3",
+    "name": "JWT sem expiracao",
+    "owasp": "A07",
+    "status": "VULNERAVEL",
+    "evidence": "Token nao contem claim 'exp': ['userId', 'role', 'email', 'iat']"
+  },
+  {
+    "id": "V4",
+    "name": "Role/token expostos no body da resposta",
+    "owasp": "A02",
+    "status": "VULNERAVEL",
+    "evidence": "Resposta do /login inclui token e role em texto no corpo"
+  },
+  {
+    "id": "V7",
+    "name": "IDOR: pedido de outro usuario acessivel",
+    "owasp": "A01",
+    "status": "VULNERAVEL",
+    "evidence": "Usuario comum (id=2) leu /api/orders/2 (pedido do admin) — sem ownership check"
+  },
+  {
+    "id": "V6",
+    "name": "SQL Injection (UNION) vaza credenciais",
+    "owasp": "A03",
+    "status": "VULNERAVEL",
+    "evidence": "UNION SELECT retornou coluna 'password' de users via /api/orders/:id"
+  },
+  {
+    "id": "V10",
+    "name": "Painel admin acessivel a usuario comum",
+    "owasp": "A01",
+    "status": "VULNERAVEL",
+    "evidence": "Token de role=customer acessou /api/admin/orders (HTTP 200)"
+  },
+  {
+    "id": "V9",
+    "name": "Preco definido pelo cliente (price=0 aceito)",
+    "owasp": "A04",
+    "status": "VULNERAVEL",
+    "evidence": "Pedido com item price=0 foi aceito (HTTP 200) — preco nao validado no servidor"
+  },
+  {
+    "id": "V16",
+    "name": "CORS aceita qualquer origem",
+    "owasp": "A05",
+    "status": "VULNERAVEL",
+    "evidence": "Access-Control-Allow-Origin: *"
+  },
+  {
+    "id": "V19",
+    "name": "Headers de seguranca ausentes (sem helmet)",
+    "owasp": "A05",
+    "status": "VULNERAVEL",
+    "evidence": "Sem HSTS, sem X-Frame-Options, e X-Powered-By=Express exposto"
+  },
+  {
+    "id": "V18",
+    "name": "Sem rate limiting no login",
+    "owasp": "A07",
+    "status": "VULNERAVEL",
+    "evidence": "12 tentativas seguidas, nenhum HTTP 429 (brute-force livre)"
+  },
+  {
+    "id": "V20",
+    "name": "Stack trace exposto em erro",
+    "owasp": "A05",
+    "status": "VULNERAVEL",
+    "evidence": "Resposta de erro contem 'stack'/traceback"
+  }
+]
