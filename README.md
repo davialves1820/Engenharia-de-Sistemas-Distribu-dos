@@ -1,6 +1,6 @@
-# GoFood — Segurança em SPA (Engenharia de Sistemas Distribuídos, UFPB)
+# Tarefas da disciplina de Engenharia de Sistemas Distribuídos
 
-Repositório com as **duas entregas** da atividade de segurança.
+**Aluno:** Davi Alves Rodrigues.
 
 ## Estrutura
 
@@ -37,4 +37,4 @@ O SAST rodou com **Semgrep** usando regras customizadas (o registry oficial não
 
 ## Nota sobre uso de IA
 
-Parte deste material foi produzida com apoio de assistente de IA (Claude) e revisada pelo autor. Incluída por transparência — verificar a política da disciplina sobre uso de ferramentas de IA.
+Parte deste material foi produzida com apoio de assistente de IA e revisada pelo autor.
