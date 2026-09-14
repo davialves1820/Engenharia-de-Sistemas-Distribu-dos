@@ -1,5 +1,4 @@
 # Exercício Prático: Segurança em SPA — GoFood
-### Solução completa · Engenharia de Sistemas Distribuídos (UFPB) · Material 2
 
 ---
 
