@@ -63,4 +63,4 @@ Ao subir para o GitHub, ativar em *Settings → Code security*: Dependabot alert
 
 ## Nota sobre uso de IA
 
-Parte deste material (respostas, relatórios e configs) foi produzida com apoio de assistente de IA (Claude), revisada pelo autor. Incluída por transparência — verifique a política da disciplina sobre uso de ferramentas de IA e ajuste conforme necessário.
+Parte deste material (respostas, relatórios e configs) foi produzida com apoio de assistente de IA, revisada pelo autor.
