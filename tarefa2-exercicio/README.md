@@ -1,6 +1,6 @@
 # GoFood — Exercício Prático: Segurança em SPA
 
-O exercício parte de uma aplicação SPA (React) + API REST (Node.js/Express) com 20 vulnerabilidades plantadas (V1–V20), pede o mapeamento ao OWASP Top 10, a análise dos vetores de ataque, a correção do código e a análise arquitetural (defense-in-depth + pipeline DevSecOps).
+O exercício parte de uma aplicação SPA (React) + API REST (Node.js/Express) com 20 vulnerabilidades plantadas (V1–V20), pede o mapeamento ao OWASP Top 10, a análise dos vetores de ataque, a correção do código e a análise arquitetural (defense-in-depth + pipeline DevSecOps). 
 
 ## Estrutura do repositório
 
