@@ -613,7 +613,3 @@ Esses logs devem ir para um **SIEM** com alertas de anomalia (não só armazenam
 | **Runtime** | WAF + RASP + SIEM com alertas (ver Q9c) + rate limiting | Ataques em produção: brute force, injeção, tentativas de escalação, exfiltração | **V2, V6** (injeção bloqueada pelo WAF), **V10, V14** (403 monitorado), **V18** (rate limit), **V12/V13** (exfiltração de token detectável) |
 
 **Princípio geral (shift-left):** quanto mais cedo no pipeline a falha é pega, mais barata a correção. Secrets e lint no pre-commit; SAST/SCA no build; testes de autorização no test; DAST e checagem de configuração no deploy; e defesa + detecção em runtime como última camada. Nenhuma etapa sozinha cobre tudo — é o encadeamento (defense in depth) que fecha o conjunto V1–V20.
-
----
-
-*Fim da solução.*
